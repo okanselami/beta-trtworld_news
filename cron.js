@@ -1,3 +1,5 @@
+'use strict';
+
 const Xray = require('x-ray');
 const async = require('async');
 const readPage = require('node-read');
