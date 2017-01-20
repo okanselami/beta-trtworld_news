@@ -5,6 +5,7 @@ const async = require('async');
 const readPage = require('node-read');
 const mongoose = require('mongoose');
 const cron = require('node-cron');
+const striptags = require('striptags');
 
 const Schema = mongoose.Schema;
  // link model
@@ -65,7 +66,7 @@ cron.schedule('* * * * *', () => {
       .then((articles) => {
         const data = articles.map(article => ({
           title: article.title,
-          content: article.content
+          content: striptags(article.content)
         })
         );
         console.log('News details were fetched.');
